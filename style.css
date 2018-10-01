@@ -1,0 +1,55 @@
+/* TODO:
+    - + Button i header - font-size. Brug evt et billede i stedet?
+
+    - Læs op på aria-valuemin, aria-valuemax, aria-valuenow
+
+*/
+
+header {
+    /* TEMP! - Lad indhold styre height */
+    height: 116px;
+
+    background-color: #1c7cd5;
+}
+
+#headerTitle {
+    font-size: 23px;
+}
+
+header button {
+    height: 31px;
+    width: 31px;
+
+    /* ** font size bliver overskrevet af .btn class - så brug evt .btn i stedet */
+    /* font-size: 2rem; */
+}
+
+#progressContainer {
+    /* height: 17px; */
+}
+
+#progressBar p {
+    min-width: 100%;
+    left: 0;
+
+    font-size: 15px;
+}
+
+#posts {
+    background-color: #e4e4e4;
+    height: 1000px;
+}
+
+#posts article {
+    height: 100px;
+    background-color: 
+}
+
+.greenBorder {
+    border-left: 8px solid #5cb85c;
+    
+}
+
+.redBorder {
+    border-left: 8px solid #d9534f;
+}
