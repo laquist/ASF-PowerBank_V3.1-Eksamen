@@ -1,10 +1,18 @@
 /* TODO:
     - + Button i header - font-size. Brug evt et billede i stedet?
-
     - Læs op på aria-valuemin, aria-valuemax, aria-valuenow
 
+    - ** 2. prioritet **
+    - Card title + smiley placering
 */
 
+
+body {
+    /* Er det noget med det er dårligt at sætte noget på body? */
+    font-family: sans-serif;
+}
+
+/* -- HEADER -- */
 header {
     /* TEMP! - Lad indhold styre height */
     height: 116px;
@@ -24,10 +32,6 @@ header button {
     /* font-size: 2rem; */
 }
 
-#progressContainer {
-    /* height: 17px; */
-}
-
 #progressBar p {
     min-width: 100%;
     left: 0;
@@ -35,19 +39,24 @@ header button {
     font-size: 15px;
 }
 
+
+/* -- POSTS -- */
 #posts {
     background-color: #e4e4e4;
-    height: 1000px;
 }
 
 #posts article {
-    height: 100px;
-    background-color: 
+    font-family: sans-serif;
 }
 
+.cardSmiley {
+    height: 47px;
+    width: 47px;
+}
+
+/* Red/Green left border for posts */
 .greenBorder {
     border-left: 8px solid #5cb85c;
-    
 }
 
 .redBorder {
