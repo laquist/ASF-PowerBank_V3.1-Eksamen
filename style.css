@@ -4,6 +4,7 @@
 
     - ** 2. prioritet **
     - Card title + smiley placering
+    - Brug bootstraps inputvalidering .isvalid til når jeg udfylder forms ved add?
 */
 
 
@@ -61,4 +62,27 @@ header button {
 
 .redBorder {
     border-left: 8px solid #d9534f;
+}
+
+
+/* --- ADD/MODAL --- */
+.energiSmileyLabels {
+    height: 47px;
+    width: 47px;
+}
+
+.energiSmileyLabels input {
+    height: 47px;
+    width: 47px;
+}
+
+.imgTest::before {
+    /* background-color: purple;
+    border-radius: 50%;
+    width: 0%; */
+}
+
+.custom-radio .custom-control-input:checked~.imgTest {
+    background-color: purple;
+    border-radius: 50%;
 }

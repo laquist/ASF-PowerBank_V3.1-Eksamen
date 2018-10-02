@@ -15,9 +15,93 @@
   </head>
   <body>
     <div class="container-fluid">
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCenter">
+            Launch demo modal
+        </button> -->
+      
+        <!-- Modal -->
+        <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <!-- <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div> -->
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Titel</label>
+                            <input type="text" class="form-control" id="titelInput">
+
+                            <label>Energi</label>
+                            <div>
+                                <div class="custom-control custom-radio custom-control-inline p-0 m-0 energiSmileyLabels">
+                                    <label class="energiSmileyLabels">
+                                        <input type="radio" id="vomitSmileyRadio" name="vomitSmileyRadio" class="custom-control-input">
+                                        <img class="imgTest" src="src/img/vomited.svg" alt="Meget trist">
+                                    </label>
+                                </div>
+
+                                <div class="custom-control custom-radio custom-control-inline p-0 m-0 energiSmileyLabels">
+                                    <label class="energiSmileyLabels">
+                                        <input type="radio" id="sadSmileyRadio" name="sadSmileyRadio" class="custom-control-input">
+                                        <img class="imgTest" src="src/img/Sad.svg" alt="Trist">
+                                    </label>
+                                </div>
+
+                                <div class="custom-control custom-radio custom-control-inline p-0 m-0 energiSmileyLabels">
+                                    <label class="energiSmileyLabels">
+                                        <input type="radio" id="neutralSmileyRadio" name="neutralSmileyRadio" class="custom-control-input">
+                                        <img class="imgTest" src="src/img/neutral.svg" alt="Neutral">
+                                    </label>
+                                </div>
+
+                                <div class="custom-control custom-radio custom-control-inline p-0 m-0 energiSmileyLabels">
+                                    <label class="energiSmileyLabels">
+                                        <input type="radio" id="happySmileyRadio" name="happySmileyRadio" class="custom-control-input">
+                                        <img class="imgTest" src="src/img/happy-real.svg" alt="Glad">
+                                    </label>
+                                </div>
+
+                                <div class="custom-control custom-radio custom-control-inline p-0 m-0 energiSmileyLabels">
+                                    <label class="energiSmileyLabels">
+                                        <input type="radio" id="veryHappySmileyRadio" name="veryHappySmileyRadio" class="custom-control-input">
+                                        <img class="imgTest" src="src/img/happy.svg" alt="Meget glad">
+                                    </label>
+                                </div>
+                            </div>
+<!-- 
+                            id="vomitSmileyLabel"
+                            id="sadSmileyLabel"
+                            id="neutralSmileyLabel"
+                            id="happySmileyLabel"
+                            id="veryHappySmileyLabel"
+ -->
+                            
+                            <!-- <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline1">Toggle this custom radio</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+                            </div> -->
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Gem</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
         <header class="row p-3">
             <p id="headerTitle" class="col-11 p-0 text-white">Powerbank</p>
-            <button type="button" class="col-1 p-0 btn btn-outline-light text-white p-0">+</button> 
+            <button type="button" class="col-1 p-0 btn btn-outline-light text-white p-0" data-toggle="modal" data-target="#ModalCenter">+</button> 
 
             <div id="progressContainer" class="progress col-12 p-0">
                 <div id="progressBar" class="progress-bar text-dark bg-success" role="progressbar" style="width: 77%" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100">
@@ -78,6 +162,7 @@
             </article>
             
         </section>
+
     </div>    
 
     <!-- Optional JavaScript -->
