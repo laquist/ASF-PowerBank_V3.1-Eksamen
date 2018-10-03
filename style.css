@@ -1,23 +1,27 @@
 /* TODO:
     - + Button i header - font-size. Brug evt et billede i stedet?
+    - Når man åbner 'add'-siden, så skal der være et kryds til at lukke den popup, i stedet for add knappen
     - Læs op på aria-valuemin, aria-valuemax, aria-valuenow
+    - Find en måde at få den rigtige size "border" når man vælger en smiley under 'add'-siden
 
+    
     - ** 2. prioritet **
     - Card title + smiley placering
     - Brug bootstraps inputvalidering .isvalid til når jeg udfylder forms ved add?
+
+    - ** Ekstra opgaver: ** 
+    - Lav 'Rediger' knappen på alle posts. Så den åbner 'add'-modal, men med felterne udfyldt.
 */
 
 
 body {
     /* Er det noget med det er dårligt at sætte noget på body? */
     font-family: sans-serif;
+    background-color: #e4e4e4;
 }
 
 /* -- HEADER -- */
 header {
-    /* TEMP! - Lad indhold styre height */
-    height: 116px;
-
     background-color: #1c7cd5;
 }
 
@@ -25,13 +29,24 @@ header {
     font-size: 23px;
 }
 
-header button {
-    height: 31px;
-    width: 31px;
+#addBtn {
+    min-width: 31px;
+    max-width: 31px;
+
+    min-height: 31px;
+    max-height: 31px;
 
     /* ** font size bliver overskrevet af .btn class - så brug evt .btn i stedet */
     /* font-size: 2rem; */
 }
+
+/* #closeBtn {
+    min-width: 31px;
+    max-width: 31px;
+
+    min-height: 31px;
+    max-height: 31px;
+} */
 
 #progressBar p {
     min-width: 100%;
@@ -50,18 +65,17 @@ header button {
     font-family: sans-serif;
 }
 
-.cardSmiley {
-    height: 47px;
-    width: 47px;
-}
-
-/* Red/Green left border for posts */
 .greenBorder {
     border-left: 8px solid #5cb85c;
 }
 
 .redBorder {
     border-left: 8px solid #d9534f;
+}
+
+.cardSmiley {
+    height: 47px;
+    width: 47px;
 }
 
 
@@ -71,18 +85,15 @@ header button {
     width: 47px;
 }
 
-.energiSmileyLabels input {
-    height: 47px;
-    width: 47px;
+.custom-radio .custom-control-input:checked~ img {
+    background-color: #7e28ff;
+    border-radius: 50%;
 }
 
-.imgTest::before {
-    /* background-color: purple;
-    border-radius: 50%;
-    width: 0%; */
+#descriptionInput {
+    height: 230px;
 }
 
-.custom-radio .custom-control-input:checked~.imgTest {
-    background-color: purple;
-    border-radius: 50%;
+#saveBtn {
+    background-color: #1c7cd5;
 }
