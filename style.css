@@ -30,23 +30,18 @@ header {
 }
 
 #addBtn {
-    min-width: 31px;
+    /* min-width: 31px; */
     max-width: 31px;
 
-    min-height: 31px;
+    /* min-height: 31px; */
     max-height: 31px;
+
+    /* Same z-index as modal */
+    z-index: 1050;
 
     /* ** font size bliver overskrevet af .btn class - så brug evt .btn i stedet */
     /* font-size: 2rem; */
 }
-
-/* #closeBtn {
-    min-width: 31px;
-    max-width: 31px;
-
-    min-height: 31px;
-    max-height: 31px;
-} */
 
 #progressBar p {
     min-width: 100%;

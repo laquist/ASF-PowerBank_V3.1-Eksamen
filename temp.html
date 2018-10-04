@@ -59,3 +59,79 @@
                                 <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
                                 <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
                             </div> -->
+
+
+
+<!--  -->
+<!-- 04/10 kl. 10:28 -->
+<!--  -->                            
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" id="closeBtn" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label>Titel</label>
+                    <input type="text" class="form-control" id="titleInput">
+                </div>
+
+                <div class="form-group">
+                    <label class="w-100">Energi</label>
+                    <div class="custom-control custom-radio custom-control-inline p-0 m-0">
+                        <label class="energiSmileyLabels">
+                            <input type="radio" id="vomitSmileyRadio" name="radioSmileys" class="custom-control-input">
+                            <img src="src/img/vomited.svg" alt="Meget trist">
+                        </label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline p-0 m-0">
+                        <label class="energiSmileyLabels">
+                            <input type="radio" id="sadSmileyRadio" name="radioSmileys" class="custom-control-input">
+                            <img src="src/img/Sad.svg" alt="Trist">
+                        </label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline p-0 m-0">
+                        <label class="energiSmileyLabels">
+                            <input type="radio" id="neutralSmileyRadio" name="radioSmileys" class="custom-control-input">
+                            <img src="src/img/neutral.svg" alt="Neutral">
+                        </label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline p-0 m-0">
+                        <label class="energiSmileyLabels">
+                            <input type="radio" id="happySmileyRadio" name="radioSmileys" class="custom-control-input">
+                            <img src="src/img/happy-real.svg" alt="Glad">
+                        </label>
+                    </div>
+
+                    <div class="custom-control custom-radio custom-control-inline p-0 m-0">
+                        <label class="energiSmileyLabels">
+                            <input type="radio" id="veryHappySmileyRadio" name="radioSmileys" class="custom-control-input">
+                            <img src="src/img/happy.svg" alt="Meget glad">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Beskrivelse</label>
+                    <input type="text" class="form-control" id="descriptionInput">
+                </div>
+            </form>
+
+            <button type="button" id="saveBtn" class="btn btn-primary px-4">Gem</button>
+        </div>
+
+    </div>
+    </div>
+</div>
