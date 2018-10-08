@@ -21,9 +21,17 @@ class View {
             console.log('infoObj er tomt!');
         }
     }
+
+    clearFields () {
+        
+    }
     
     addItem () {
 
+    }
+
+    displayEnergy () {
+        
     }
 
     // Nyt navn?
@@ -50,6 +58,10 @@ class View {
         }
 
         return value;
+    }
+
+    getDOMstrings () {
+        return DOMstrings;
     }
 }
 

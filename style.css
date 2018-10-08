@@ -1,20 +1,3 @@
-/* TODO:
-    - + Button i header - font-size. Brug evt et billede i stedet?
-    - Når man åbner 'add'-siden, så skal der være et kryds til at lukke den popup, i stedet for add knappen
-    - Læs op på aria-valuemin, aria-valuemax, aria-valuenow
-    - Find en måde at få den rigtige size "border" når man vælger en smiley under 'add'-siden
-
-    
-    - ** 2. prioritet **
-    - Card title + smiley placering
-    - Brug bootstraps inputvalidering .isvalid til når jeg udfylder forms ved add?
-
-    - ** Ekstra opgaver: ** 
-    - Lav 'Rediger' knappen på alle posts. Så den åbner 'add'-modal, men med felterne udfyldt.
-
-    - PUSH TIL GIT *********
-*/
-
 body {
     /* Er det noget med det er dårligt at sætte noget på body? */
     font-family: sans-serif;
