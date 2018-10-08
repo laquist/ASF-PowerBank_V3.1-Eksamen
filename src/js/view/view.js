@@ -39,6 +39,7 @@ class View {
         const posts = document.querySelector(DOMstrings.posts);
         let borderColor;
         let imgPath;
+        let dateString;
         
         //Sets Green/Red border
         if (obj.energy >= 0) {
@@ -50,6 +51,9 @@ class View {
 
         //Gets image path
         imgPath = this.getSmileyImgPath(obj.energy);
+
+        //Creates date string
+        dateString = this.createDateString(obj.date);
         
         let html = `
         <article class="col-12 col-md-6 col-xl-4 mb-3">
@@ -121,6 +125,61 @@ class View {
         }
 
         return path;
+    }
+
+    // static dateTEST () {
+    //     const currentDate = new Date();
+
+    //     // Burde være 30 dage siden
+    //     const testDateInPast = new Date("September 08 2018 12:30");
+
+    //     // TEST
+    //     console.log('Milisecs:');
+    //     let milisekunder = currentDate.getTime() - testDateInPast.getTime();
+    //     console.log(milisekunder);
+    //     console.log('---------');
+    //     console.log('Sekunder:');
+    //     let sekunder = milisekunder / 1000;
+    //     console.log(sekunder);
+    //     console.log('---------');
+    //     console.log('Mins:');
+    //     let minutter = sekunder / 60;
+    //     console.log(minutter);
+    //     console.log('---------');
+    //     console.log('Timer:');
+    //     let timer = minutter / 60;
+    //     console.log(timer);
+    //     console.log('---------');
+    //     console.log('Dage:')
+    //     let dage = timer / 24;
+    //     console.log(dage);
+    //     console.log('---------');
+    // }
+
+    createDateString(date) {
+        const currentDate = new Date();
+        let dateString;
+        let difference;
+
+        //Milisekunder
+        difference = currentDate.getTime() - date.getTime();
+        //Sekunder
+        difference = difference / 1000;
+        //Minutter
+        difference = difference / 60;
+        //Timer
+        difference = difference / 60;
+        //Dage
+        difference = difference / 24;
+
+        if (difference === 1) {
+
+        }
+
+        dateString = difference + ' dage';
+
+
+        // Skal jeg udregne ^dage siden^, sådan her, eller ved at sammenligne år, måned, dag?
     }
 
     getDOMstrings () {
