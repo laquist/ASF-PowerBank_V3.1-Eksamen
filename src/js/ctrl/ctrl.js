@@ -1,6 +1,5 @@
 let myPowerbank;
 let myView;
-let data = {};
 
 class Controller {
     static ctrlAdd () {

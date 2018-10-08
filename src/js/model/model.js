@@ -20,10 +20,13 @@ class Powerbank {
 
 
 class Posts {
-    constructor (id, title, energy, desc) {
+    constructor (id, title, energy, desc, date) {
         this.id = id;
         this.title = title;
         this.energy = energy;
         this.desc = desc;
+        this.date = date;
     }
 }
+
+let data = {};
