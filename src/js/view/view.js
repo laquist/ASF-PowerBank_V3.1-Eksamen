@@ -4,11 +4,11 @@ class View {
         let infoObj = {};
 
         if (document.querySelector(DOMstrings.title).value 
-        && document.querySelector(DOMstrings.energy).getAttribute('id') 
-        && document.getElementById(DOMstrings.desc).value) {
+        && document.querySelector(DOMstrings.energy)
+        && document.querySelector(DOMstrings.desc).value) {
             infoObj.title = document.querySelector(DOMstrings.title).value;
             infoObj.energy = this.smileyToEnergyFormat(document.querySelector(DOMstrings.energy).getAttribute('id'));
-            infoObj.desc = document.getElementById(DOMstrings.desc).value;
+            infoObj.desc = document.querySelector(DOMstrings.desc).value;
         }
         else {
             // Lav dette til en popup
