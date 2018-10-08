@@ -1,6 +1,20 @@
 class Powerbank {
-    addItem () {
+    addItem (infoObj) {
         //Giv et ID her. Tjek det næste ledige
+
+        // Save objektet!
+
+        // return det nye oprettede objekt!
+    }
+
+    saveAll () {
+        //Save to Local Storage
+        //Få et object med til at gemme?
+    }
+
+    loadAll () {
+        //Load from Local Storage
+        //Load til 'data' variablen
     }
 }
 

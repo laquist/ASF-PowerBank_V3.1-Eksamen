@@ -3,29 +3,33 @@ let myView;
 let data = {};
 
 class Controller {
-    static ctrlAdd (title, energy, desc,) {
-        // if () {
+    static ctrlAdd () {
+        // Gets info from input fields
+        let info = myView.getInfo();
 
-        // }
+        // Creates and returns new instance
+        let newObj = myPowerbank.addItem(info);
 
-        //Få returnet det nye object, og kald save på den?
+        // Displays new post on page
+        myView.addPost(newObj);
+        
+        // Clears input fields
+        myView.clearFields();
+
+        // Updates energy
+        Controller.updateEnergy();
     }
 
-    static saveAll () {
-        //Save to Local Storage
-        //Få et object med til at gemme?
-    }
+    static updateEnergy () {
 
-    static loadAll () {
-        //Load from Local Storage
-        //Load til 'data' variablen
     }
 
     static setupEventListeners () {
-        //Gem knappen i modal
+        const DOMstrings = myView.getDOMstrings();
 
-        document.getElementById('saveBtn').addEventListener('click', function () {
-            ctrlAdd();
+        //Listens to click on save button when adding new post
+        document.querySelector(DOMstrings.save).addEventListener('click', function () {
+            Controller.ctrlAdd(); 
         });
     }
 
@@ -35,6 +39,9 @@ class Controller {
 
         //Creates View instance
         myView = new View();
+
+        // Adds EventListeners
+        Controller.setupEventListeners();
     }
 }
 

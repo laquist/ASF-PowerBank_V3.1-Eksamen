@@ -25,6 +25,8 @@ class View {
         document.querySelector(DOMstrings.title).value = '';
         document.querySelector(DOMstrings.energy).checked = false;
         document.querySelector(DOMstrings.desc).value = '';
+
+        this.hideModal();
     }
 
     hideModal () {
@@ -32,7 +34,7 @@ class View {
         $('#Modal').modal('hide');
     }
     
-    addItem () {
+    addPost () {
 
     }
 
@@ -75,5 +77,6 @@ let DOMstrings = {
     title: '#titleInput',
     // Checks for a element with a specific property+value (name=radioSmileys), that is checked
     energy: 'input[name="radioSmileys"]:checked',
-    desc: '#descInput'
+    desc: '#descInput',
+    save: '#saveBtn'
 }
