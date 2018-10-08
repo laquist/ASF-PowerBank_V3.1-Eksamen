@@ -26,6 +26,11 @@ class View {
         document.querySelector(DOMstrings.energy).checked = false;
         document.querySelector(DOMstrings.desc).value = '';
     }
+
+    hideModal () {
+        // jQuery command for closing modal
+        $('#Modal').modal('hide');
+    }
     
     addItem () {
 
