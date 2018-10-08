@@ -11,19 +11,20 @@ class View {
             infoObj.desc = document.getElementById(DOMstrings.desc).value;
         }
         else {
+            // Lav dette til en popup
             console.log("Felterne må ikke være null eller empty!");
         }
         
+        // Tjekker om objektet er tomt
         if (infoObj) {
             return infoObj;
-        }
-        else {
-            console.log('infoObj er tomt!');
         }
     }
 
     clearFields () {
-        
+        document.querySelector(DOMstrings.title).value = '';
+        document.querySelector(DOMstrings.energy).checked = false;
+        document.querySelector(DOMstrings.desc).value = '';
     }
     
     addItem () {
@@ -31,7 +32,7 @@ class View {
     }
 
     displayEnergy () {
-        
+
     }
 
     // Nyt navn?
@@ -66,8 +67,8 @@ class View {
 }
 
 let DOMstrings = {
-    title: '.titleInput',
+    title: '#titleInput',
     // Checks for a element with a specific property+value (name=radioSmileys), that is checked
     energy: 'input[name="radioSmileys"]:checked',
-    desc: '.descInput'
+    desc: '#descInput'
 }
