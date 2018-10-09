@@ -156,30 +156,39 @@ class View {
     //     console.log('---------');
     // }
 
-    createDateString(date) {
+    // createDateString(date) {        
+    static createDateString(date) {   
         const currentDate = new Date();
         let dateString;
-        let difference;
+        let dateTime = date.getHours() + '.' + date.getMinutes();
 
-        //Milisekunder
-        difference = currentDate.getTime() - date.getTime();
-        //Sekunder
-        difference = difference / 1000;
-        //Minutter
-        difference = difference / 60;
-        //Timer
-        difference = difference / 60;
-        //Dage
-        difference = difference / 24;
+        //Checks if the day is today
+        if (date.getFullYear() === currentDate.getFullYear()
+        && date.getMonth() === currentDate.getMonth()
+        && date.getDate() === currentDate.getDate()) {
+            dateString = 'I dag kl. ';
+        }
+        else {
+            // Rounding up to full day (so calculating from time 00:00:00)
+            let newDate = date;
+            newDate.setHours(0, 0, 0, 0);
 
-        if (difference === 1) {
+            let newCurrentDate = currentDate;
+            newCurrentDate.setHours(0, 0, 0, 0);
 
+            //Gets Milliseconds since Epoch time
+            let difference = newCurrentDate.getTime() - newDate.getTime();
+            let days = difference / 1000 / 60 / 60 / 24;
+
+            if (days === 1) {
+                dateString = days + ' dag siden kl. ';
+            }
+            else {
+                dateString = days + ' dage siden kl. ';
+            }
         }
 
-        dateString = difference + ' dage';
-
-
-        // Skal jeg udregne ^dage siden^, sådan her, eller ved at sammenligne år, måned, dag?
+        return dateString + dateTime;
     }
 
     getDOMstrings () {
