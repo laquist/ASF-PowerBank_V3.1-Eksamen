@@ -6,20 +6,26 @@ class Controller {
         // Gets info from input fields
         const info = myView.getInfo();
 
-        // Creates and returns new instance
-        const newObj = myPowerbank.addItem(info);
+        //Checks if the properties have 'truthy values' (not null, empty string, etc.)
+        if (info.title && info.energy && info.desc && info.date) {
+            // Creates and returns new instance
+            const newObj = myPowerbank.addItem(info);
 
-        // Displays new post on page
-        myView.addPost(newObj);
+            // Displays new post on page
+            myView.addPost(newObj);
 
-        //Saves to Local Storage
-        myPowerbank.saveAll();
-        
-        // Clears input fields
-        myView.clearFields();
+            //Saves to Local Storage
+            myPowerbank.saveAll();
+            
+            // Clears input fields
+            myView.clearFields();
 
-        // Updates energy
-        Controller.updateEnergy();
+            // Updates energy
+            Controller.updateEnergy();
+        }
+        else {
+            //Lav en console.log, popup, alert her. 
+        }
     }
 
     static updateEnergy () {

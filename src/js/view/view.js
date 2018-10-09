@@ -12,14 +12,11 @@ class View {
             infoObj.date = new Date();
         }
         else {
-            // Lav dette til en popup
+            // Lav dette til en popup/alert
             console.log("Felterne må ikke være null eller empty!");
         }
         
-        // Tjekker om objektet er tomt
-        if (infoObj) {
-            return infoObj;
-        }
+        return infoObj;
     }
 
     clearFields () {
