@@ -1,20 +1,33 @@
 class Powerbank {
     addItem (infoObj) {
-        //Giv et ID her. Tjek det næste ledige
+        let item;
+        let ID;
 
-        // Save objektet!
+        //Checks for and gives the next available ID
+        if (data.posts.length != 0) {
+            ID = data.posts[data.posts.length - 1].id + 1;
+        }
+        else {
+            ID = 1;
+        }
 
-        // return det nye oprettede objekt!
-    }
+        //Creates instance
+        item = new Posts(ID, infoObj.title, infoObj.energy, infoObj.desc, infoObj.date);
 
-    saveAll () {
-        //Save to Local Storage
-        //Få et object med til at gemme?
+        //Saves to data object
+        data.posts[ID] = item;
+        
+        return item;
     }
 
     loadAll () {
         //Load from Local Storage
         //Load til 'data' variablen
+    }
+
+    saveAll () {
+        //Save to Local Storage
+        //Få et object med til at gemme?
     }
 }
 
@@ -29,4 +42,6 @@ class Posts {
     }
 }
 
-let data = {};
+let data = {
+    posts: [],
+};

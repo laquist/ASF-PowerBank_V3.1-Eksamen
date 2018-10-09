@@ -11,6 +11,9 @@ class Controller {
 
         // Displays new post on page
         myView.addPost(newObj);
+
+        //Saves to Local Storage
+        myPowerbank.saveAll();
         
         // Clears input fields
         myView.clearFields();
