@@ -44,11 +44,8 @@ class Powerbank {
 
         if (dataString) {
             let dataTable = JSON.parse(dataString);
-            let keys = Object.keys(dataTable.posts);
 
-            // Denne virker
-            // data.posts.push(dataTable.posts[keys[i]]);
-
+            //Checks for matching results in data.posts and dataTable.posts, to prevent adding duplicates
             dataTable.posts.forEach(item => {
                 if (!this.checkForMatch(data.posts, 'id', item.id)) {
                     data.posts.push(item);
