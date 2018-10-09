@@ -36,7 +36,7 @@ class View {
     }
     
     addPost (obj) {
-        const posts = document.querySelector(DOMstrings.posts);
+        const posts = document.querySelector(DOMstrings.postsContainer);
         let borderColor;
         let imgPath;
         let dateString;
@@ -55,7 +55,7 @@ class View {
         //Creates date string
         dateString = this.createDateString(obj.date);
         
-        let html = `
+        const html = `
         <article class="col-12 col-md-6 col-xl-4 mb-3">
             <div class="card h-100 bg-white ${borderColor}">
                 <div class="card-body pl-3 pr-2 pt-2">
@@ -64,7 +64,7 @@ class View {
                         <img class="cardSmiley" src="${imgPath}">
                     </div>
 
-                    <h6 class="card-subtitle mb-2 text-muted">I dag kl. 16.10</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">${dateString}</h6>
                     <p class="card-text">${obj.desc}</p>
                 </div>
                 
@@ -74,6 +74,7 @@ class View {
         </article>
         `;
 
+        posts.insertAdjacentHTML('beforeend', html);
     }
 
     displayEnergy () {
@@ -127,40 +128,12 @@ class View {
         return path;
     }
 
-    // static dateTEST () {
-    //     const currentDate = new Date();
-
-    //     // Burde være 30 dage siden
-    //     const testDateInPast = new Date("September 08 2018 12:30");
-
-    //     // TEST
-    //     console.log('Milisecs:');
-    //     let milisekunder = currentDate.getTime() - testDateInPast.getTime();
-    //     console.log(milisekunder);
-    //     console.log('---------');
-    //     console.log('Sekunder:');
-    //     let sekunder = milisekunder / 1000;
-    //     console.log(sekunder);
-    //     console.log('---------');
-    //     console.log('Mins:');
-    //     let minutter = sekunder / 60;
-    //     console.log(minutter);
-    //     console.log('---------');
-    //     console.log('Timer:');
-    //     let timer = minutter / 60;
-    //     console.log(timer);
-    //     console.log('---------');
-    //     console.log('Dage:')
-    //     let dage = timer / 24;
-    //     console.log(dage);
-    //     console.log('---------');
-    // }
-
-    // createDateString(date) {        
-    static createDateString(date) {   
+    createDateString(date) {   
         const currentDate = new Date();
         let dateString;
-        let dateTime = date.getHours() + '.' + date.getMinutes();
+        //Saves dateTime and makes sure that the time is in 4 digits, instead of it only showing one zero character (15:00 vs 15:0)
+        //When using negatives with .slice(), it starts from the end of the string, instead of from the start
+        const dateTime = ('0' + date.getHours()).slice(-2) + '.' + ('0' + date.getMinutes()).slice(-2);
 
         //Checks if the day is today
         if (date.getFullYear() === currentDate.getFullYear()
@@ -177,8 +150,8 @@ class View {
             newCurrentDate.setHours(0, 0, 0, 0);
 
             //Gets Milliseconds since Epoch time
-            let difference = newCurrentDate.getTime() - newDate.getTime();
-            let days = difference / 1000 / 60 / 60 / 24;
+            const difference = newCurrentDate.getTime() - newDate.getTime();
+            const days = difference / 1000 / 60 / 60 / 24;
 
             if (days === 1) {
                 dateString = days + ' dag siden kl. ';
