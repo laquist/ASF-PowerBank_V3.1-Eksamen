@@ -12,27 +12,67 @@ class Powerbank {
         }
 
         //Creates instance
-        item = new Posts(ID, infoObj.title, infoObj.energy, infoObj.desc, infoObj.date);
+        item = new Post(ID, infoObj.title, infoObj.energy, infoObj.desc, infoObj.date);
 
         //Saves to data object
-        data.posts[ID] = item;
+        // data.posts[ID] = item;
+        data.posts.push(item);
         
         return item;
     }
 
+    checkForMatch(array, propertyToMatch, valueToMatch) {
+        for (let i = 0; i < array.length; i++) {
+            if (array[i][propertyToMatch] === valueToMatch) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     loadAll () {
-        //Load from Local Storage
-        //Load til 'data' variablen
+        let dataString;
+
+        try {
+            if (localStorage['powerbank']) {
+                dataString = localStorage['powerbank'];
+            }
+        } 
+        catch (e) {
+            onsole.log('ERROR when loading from Local Storage!\n' + e)
+        }
+
+        if (dataString) {
+            let dataTable = JSON.parse(dataString);
+            let keys = Object.keys(dataTable.posts);
+
+            // Denne virker
+            // data.posts.push(dataTable.posts[keys[i]]);
+
+            dataTable.posts.forEach(item => {
+                if (!this.checkForMatch(data.posts, 'id', item.id)) {
+                    data.posts.push(item);
+                }
+            });
+        }
     }
 
     saveAll () {
-        //Save to Local Storage
-        //Få et object med til at gemme?
+        let dataString;
+
+        try {
+            dataString = JSON.stringify(data);
+            localStorage['powerbank'] = dataString;
+            console.log('Successfully saved to Local Storage!');
+        } 
+        catch (e) {
+            console.log('ERROR when writing to Local Storage!\n' + e)
+        }
     }
 }
 
 
-class Posts {
+class Post {
     constructor (id, title, energy, desc, date) {
         this.id = id;
         this.title = title;
@@ -43,5 +83,5 @@ class Posts {
 }
 
 let data = {
-    posts: [],
+    posts: []
 };
