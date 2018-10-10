@@ -29,7 +29,11 @@ class Controller {
     }
 
     static updateEnergy () {
+        //Calculates energy
+        const energyPercent = myPowerbank.calcEnergyPercent();
 
+        //Displays energy on page
+        myView.displayEnergy(energyPercent);
     }
 
     static ctrlLoad () {
@@ -37,11 +41,11 @@ class Controller {
         myPowerbank.loadAll();
 
         //Gets the posts from the data object
-        let posts = myPowerbank.getPosts();
+        const posts = myPowerbank.getPosts();
 
         // Adds posts to view
-        posts.forEach(post => {
-            myView.addPost(post);
+        posts.forEach(item => {
+            myView.addPost(item);
         });
     }
 
@@ -54,7 +58,11 @@ class Controller {
         });
 
         window.addEventListener('load', function () {
+            //Loads posts
             Controller.ctrlLoad();
+
+            //Updates Energy bar
+            Controller.updateEnergy();
         });
     }
 

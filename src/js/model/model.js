@@ -20,6 +20,54 @@ class Powerbank {
         return item;
     }
 
+    calcEnergyPercent () {
+        const currentTime = new Date();
+
+        let dayStart = new Date();
+        dayStart.setHours(7, 0, 0, 0);
+
+        let dayEnd = new Date();
+        dayEnd.setHours(23, 0, 0, 0);
+
+        //Calculates time for 1%
+        let interval = (dayEnd - dayStart) / 100;
+
+        //Checks if currentTime is between the dayStart & dayEnd
+        if (currentTime.getHours() >= dayStart.getHours() 
+        && currentTime.getHours() < dayEnd.getHours()) {
+            //Time difference from dayStart to now
+            let difference = currentTime - dayStart;
+
+            //Current energy based on the normal "uncharge"
+            let energy = Math.floor(difference / interval);
+
+            //Calculates energy from personal posts
+            data.posts.forEach(item => {
+                //Checks if item's date is today
+                if (item.date.getFullYear() === currentTime.getFullYear()
+                && item.date.getMonth() === currentTime.getMonth()
+                && item.date.getDate() === currentTime.getDate()) {
+                    //Limits the value to between 0-100
+                    if (energy + item.energy >= 100) {
+                        energy = 100;
+                    }
+                    else if (energy + item.energy <= 0) {
+                        energy = 0;
+                    }
+                    else {
+                        energy += item.energy;
+                    }
+                }
+            });
+
+            return energy;
+        }
+        else {
+            //0% Energy after dayEnd until next dayStart
+            return 0;
+        }
+    }
+
     checkForMatch(array, propertyToMatch, valueToMatch) {
         for (let i = 0; i < array.length; i++) {
             if (array[i][propertyToMatch] === valueToMatch) {

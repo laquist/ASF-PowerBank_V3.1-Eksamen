@@ -74,8 +74,13 @@ class View {
         posts.insertAdjacentHTML('afterbegin', html);
     }
 
-    displayEnergy () {
+    displayEnergy (energyPercent) {
+        const progressBarElement = document.querySelector(DOMstrings.progressBar);
+        const progressBarText = document.querySelector(DOMstrings.progressText);
 
+        progressBarElement.style.width = energyPercent + '%';
+        progressBarElement.setAttribute('aria-valuenow', energyPercent);
+        progressBarText.innerHTML = energyPercent + '%';
     }
 
     smileyToEnergy (smileyId) {
@@ -172,5 +177,7 @@ let DOMstrings = {
     energy: 'input[name="radioSmileys"]:checked',
     desc: '#descInput',
     save: '#saveBtn',
-    postsContainer: '#posts'
+    postsContainer: '#posts',
+    progressBar: '#progressBar',
+    progressText: '#progressText'
 };
