@@ -15,7 +15,6 @@ class Powerbank {
         item = new Post(ID, infoObj.title, infoObj.energy, infoObj.desc, infoObj.date);
 
         //Saves to data object
-        // data.posts[ID] = item;
         data.posts.push(item);
         
         return item;
@@ -28,6 +27,10 @@ class Powerbank {
             }
         }
         return false;
+    }
+
+    getPosts() {
+        return data.posts;
     }
 
     loadAll () {
@@ -44,6 +47,17 @@ class Powerbank {
 
         if (dataString) {
             let dataTable = JSON.parse(dataString);
+
+            //Formats the date
+            dataTable.posts.forEach(item => {
+                item.date = new Date(item.date);
+                console.log('item');
+                console.log(item);
+                console.log('date');
+                console.log(item.date);
+                
+                
+            });
 
             //Checks for matching results in data.posts and dataTable.posts, to prevent adding duplicates
             dataTable.posts.forEach(item => {

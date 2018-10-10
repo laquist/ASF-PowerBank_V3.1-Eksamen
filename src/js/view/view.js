@@ -71,7 +71,7 @@ class View {
         </article>
         `;
 
-        posts.insertAdjacentHTML('beforeend', html);
+        posts.insertAdjacentHTML('afterbegin', html);
     }
 
     displayEnergy () {
