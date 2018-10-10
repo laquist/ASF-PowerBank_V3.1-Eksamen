@@ -16,7 +16,7 @@ class Powerbank {
 
         //Saves to data object
         data.posts.push(item);
-        
+
         return item;
     }
 
@@ -51,12 +51,6 @@ class Powerbank {
             //Formats the date
             dataTable.posts.forEach(item => {
                 item.date = new Date(item.date);
-                console.log('item');
-                console.log(item);
-                console.log('date');
-                console.log(item.date);
-                
-                
             });
 
             //Checks for matching results in data.posts and dataTable.posts, to prevent adding duplicates
@@ -81,7 +75,6 @@ class Powerbank {
         }
     }
 }
-
 
 class Post {
     constructor (id, title, energy, desc, date) {

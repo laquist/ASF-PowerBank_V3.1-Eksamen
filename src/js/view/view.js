@@ -140,10 +140,10 @@ class View {
         }
         else {
             // Rounding up to full day (so calculating from time 00:00:00)
-            let newDate = date;
+            let newDate = new Date(date);
             newDate.setHours(0, 0, 0, 0);
 
-            let newCurrentDate = currentDate;
+            let newCurrentDate = new Date(currentDate);
             newCurrentDate.setHours(0, 0, 0, 0);
 
             //Gets Milliseconds since Epoch time

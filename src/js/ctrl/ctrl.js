@@ -71,28 +71,28 @@ class Controller {
 
     // TEMP
     static createTestData () {
-        const obj1 = {
+        const obj4 = {
             title: 'Klarede opvasken',
             energy: 10,
             desc: 'Kom igennem alle mine 40 tallerkener',
             date: new Date('October 10 2018 16:10')
         }
 
-        const obj2 = {
+        const obj3 = {
             title: 'Proppet S-tog',
             energy: -25,
             desc: 'Tog toget på arbejde, det var propfyldt og forsinket med 15min. En gammel klam person klemte sig ned ved siden af mig, og hostede ud over mig.',
             date: new Date('October 09 2018 08:12')
         }
 
-        const obj3 = {
+        const obj2 = {
             title: 'Tur i skoven',
             energy: 25,
             desc: 'Jeg gik en tur i harreskoven. Så de flotte forårsnuancer, det gav energi.',
             date: new Date('October 08 2018 15:00')
         }
 
-        const obj4 = {
+        const obj1 = {
             title: 'Trænede ben',
             energy: 10,
             desc: 'Bliver altid så glad når mine ben har fået en god tur i fitness. Der er også så tomt på denne tid.',
