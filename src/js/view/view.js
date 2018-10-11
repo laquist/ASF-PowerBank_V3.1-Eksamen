@@ -12,7 +12,6 @@ class View {
             infoObj.date = new Date();
         }
         else {
-            // Lav dette til en popup/alert
             console.log("Felterne må ikke være null eller empty!");
         }
         
@@ -72,15 +71,26 @@ class View {
         `;
 
         posts.insertAdjacentHTML('afterbegin', html);
+
+        //Hides the default post when you add your first post
+        if (posts.children.length >= 1) {
+            this.hideDefaultPost();
+        }
+    }
+
+    hideDefaultPost () {
+        document.querySelector(DOMstrings.defaultPost).style.display = 'none';
     }
 
     displayEnergy (energyPercent) {
         const progressBarElement = document.querySelector(DOMstrings.progressBar);
         const progressBarText = document.querySelector(DOMstrings.progressText);
+        
+        const roundedEnergyPercent = Math.floor(energyPercent);
 
-        progressBarElement.style.width = energyPercent + '%';
-        progressBarElement.setAttribute('aria-valuenow', energyPercent);
-        progressBarText.innerHTML = energyPercent + '%';
+        progressBarElement.style.width = roundedEnergyPercent + '%';
+        progressBarElement.setAttribute('aria-valuenow', roundedEnergyPercent);
+        progressBarText.innerHTML = roundedEnergyPercent + '%';
     }
 
     smileyToEnergy (smileyId) {
@@ -134,7 +144,6 @@ class View {
         const currentDate = new Date();
         let dateString;
         //Saves dateTime and makes sure that the time is in 4 digits, instead of it only showing one zero character (15:00 vs 15:0)
-        //When using negatives with .slice(), it starts from the end of the string, instead of from the start
         const dateTime = ('0' + date.getHours()).slice(-2) + '.' + ('0' + date.getMinutes()).slice(-2);
 
         //Checks if the day is today
@@ -173,11 +182,11 @@ class View {
 
 let DOMstrings = {
     title: '#titleInput',
-    // Checks for a element with a specific property+value (name=radioSmileys), that is checked
     energy: 'input[name="radioSmileys"]:checked',
     desc: '#descInput',
     save: '#saveBtn',
     postsContainer: '#posts',
     progressBar: '#progressBar',
-    progressText: '#progressText'
+    progressText: '#progressText',
+    defaultPost: '#defaultPost'
 };

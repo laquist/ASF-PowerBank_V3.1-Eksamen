@@ -26,27 +26,17 @@ class Powerbank {
     }
 
     calcEnergyPercent () {
-        const currentTime = new Date();
+        let currentTime = new Date();
 
-        let interval = this.calcInterval();
-
-        // let dayStart = new Date();
-        // dayStart.setHours(7, 0, 0, 0);
-
-        // let dayEnd = new Date();
-        // dayEnd.setHours(23, 0, 0, 0);
-
-        //Calculates time for 1%
-        // let interval = (dayEnd - dayStart) / 100;
-
-        //Checks if currentTime is between the dayStart & dayEnd
-        if (currentTime.getHours() >= dayStart.getHours() 
-        && currentTime.getHours() < dayEnd.getHours()) {
-            //Time difference from dayStart to now
-            let difference = currentTime - dayStart;
+        //Checks if currentTime is between the startTime & endTime
+        if (currentTime.getHours() >= data.energy.startTime.getHours() 
+        && currentTime.getHours() < data.energy.endTime.getHours()) {
+            
+            //Time difference from startTime to now
+            let difference = currentTime - data.energy.startTime;
 
             //Current energy based on the normal "uncharge"
-            let energy = Math.floor(difference / interval);
+            let energy = difference / data.energy.interval;
 
             //Calculates energy from personal posts
             data.posts.forEach(item => {
@@ -70,37 +60,33 @@ class Powerbank {
             return energy;
         }
         else {
-            //0% Energy after dayEnd until next dayStart
+            //0% Energy after endTime until next startTime
             return 0;
         }
     }
 
-    /**
-     * 
-     * @param {*} startTime 
-     * @param {*} endTime 
-     */
     calcInterval () {
-        let result = {};
-
-        // let start = new Date();
-        // start.setHours(7, 0, 0, 0);
-        
-        // let end = new Date();
-        // end.setHours(23, 0, 0, 0);
-
-        // result.start = new Date(dayStart);
-        // result.end = new Date(dayEnd)
-
-        //Calculates time for 1%
-        // let interval = (dayEnd - dayStart) / 100;
-        // result.interval = (result.end - result.start) / 100;
-
-        return result;
+        if (data.energy.startTime !== new Date(0) 
+        && data.energy.endTime !== new Date(0)) {
+            //Calculates time interval for 1%
+            data.energy.interval = (data.energy.endTime - data.energy.startTime) / 100;
+        }
+        else {
+            console.log('ERROR calculating energy interval!')
+        }
     }
+    
+    calcNextTimer () {
+        //Calculates millisecs from startTime to now
+        let currentEnergy = this.calcEnergyPercent() * data.energy.interval;
 
-    calcNextTimer() {
+        //Calculates millisecs from startTime and to the next percent
+        let nextUpdate = (Math.floor(this.calcEnergyPercent()) + 1) * data.energy.interval;
         
+        //Calculates millisecs from now to next percent
+        let timeForNextUpdate = nextUpdate - currentEnergy;
+
+        return timeForNextUpdate;
     }
 
     checkForMatch (array, propertyToMatch, valueToMatch) {
@@ -146,6 +132,9 @@ class Powerbank {
             //Formats the date for energy dayStart and dayEnd
             data.energy.startTime = new Date(dataTable.energy.startTime);
             data.energy.endTime = new Date(dataTable.energy.endTime);
+
+            //Sets interval
+            data.energy.interval = dataTable.energy.interval;
         }
     }
 

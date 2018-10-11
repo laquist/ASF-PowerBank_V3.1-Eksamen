@@ -1,5 +1,4 @@
 body {
-    /* Er det noget med det er dårligt at sætte noget på body? */
     font-family: sans-serif;
     background-color: #e4e4e4;
 }
@@ -14,17 +13,8 @@ header {
 }
 
 #addBtn {
-    /* min-width: 31px; */
     max-width: 31px;
-
-    /* min-height: 31px; */
     max-height: 31px;
-
-    /* Same z-index as modal */
-    z-index: 1050;
-
-    /* ** font size bliver overskrevet af .btn class - så brug evt .btn i stedet */
-    /* font-size: 2rem; */
 }
 
 #progressBar p {

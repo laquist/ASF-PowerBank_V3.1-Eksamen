@@ -24,7 +24,7 @@ class Controller {
             Controller.updateEnergy();
         }
         else {
-            //Lav en console.log, popup, alert her. 
+            console.log('ERROR in info from input fields!');
         }
     }
 
@@ -34,6 +34,9 @@ class Controller {
 
         //Displays energy on page
         myView.displayEnergy(energyPercent);
+
+        //Sets timer for next update
+        setTimeout(Controller.updateEnergy, myPowerbank.calcNextTimer());
     }
 
     static ctrlLoad () {
@@ -59,8 +62,8 @@ class Controller {
 
         myPowerbank.setDay(startTime, endTime);
 
-        //Saves the data to Local Storage
-        myPowerbank.saveAll();
+        //Calculates interval for 1% of time between start of day and end of day
+        myPowerbank.calcInterval();
     }
 
     static setupEventListeners () {
@@ -75,7 +78,7 @@ class Controller {
             //Loads posts
             Controller.ctrlLoad();
 
-            //Updates Energy bar
+            //Updates the energy and starts a timer for next update
             Controller.updateEnergy();
         });
     }
@@ -92,52 +95,6 @@ class Controller {
 
         // Sets times for start of day and end of day
         Controller.ctrlSetDay();
-    }
-
-    // TEMP
-    static createTestData () {
-        const obj4 = {
-            title: 'Klarede opvasken',
-            energy: 10,
-            desc: 'Kom igennem alle mine 40 tallerkener',
-            date: new Date('October 10 2018 16:10')
-        }
-
-        const obj3 = {
-            title: 'Proppet S-tog',
-            energy: -25,
-            desc: 'Tog toget på arbejde, det var propfyldt og forsinket med 15min. En gammel klam person klemte sig ned ved siden af mig, og hostede ud over mig.',
-            date: new Date('October 09 2018 08:12')
-        }
-
-        const obj2 = {
-            title: 'Tur i skoven',
-            energy: 25,
-            desc: 'Jeg gik en tur i harreskoven. Så de flotte forårsnuancer, det gav energi.',
-            date: new Date('October 08 2018 15:00')
-        }
-
-        const obj1 = {
-            title: 'Trænede ben',
-            energy: 10,
-            desc: 'Bliver altid så glad når mine ben har fået en god tur i fitness. Der er også så tomt på denne tid.',
-            date: new Date('October 08 2018 06:25')
-        }
-
-        // Creates and returns new instance
-        const newObj1 = myPowerbank.addItem(obj1);
-        const newObj2 = myPowerbank.addItem(obj2);
-        const newObj3 = myPowerbank.addItem(obj3);
-        const newObj4 = myPowerbank.addItem(obj4);
-
-        // Displays new post on page
-        myView.addPost(newObj1);
-        myView.addPost(newObj2);
-        myView.addPost(newObj3);
-        myView.addPost(newObj4);
-
-        //Saves to Local Storage
-        myPowerbank.saveAll();
     }
 }
 
