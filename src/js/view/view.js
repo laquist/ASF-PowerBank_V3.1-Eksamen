@@ -130,7 +130,7 @@ class View {
         return path;
     }
 
-    createDateString(date) {   
+    createDateString (date) {   
         const currentDate = new Date();
         let dateString;
         //Saves dateTime and makes sure that the time is in 4 digits, instead of it only showing one zero character (15:00 vs 15:0)

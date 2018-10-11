@@ -20,17 +20,24 @@ class Powerbank {
         return item;
     }
 
+    setDay (dayStart, dayEnd) {
+        data.energy.startTime = dayStart;
+        data.energy.endTime = dayEnd;
+    }
+
     calcEnergyPercent () {
         const currentTime = new Date();
 
-        let dayStart = new Date();
-        dayStart.setHours(7, 0, 0, 0);
+        let interval = this.calcInterval();
 
-        let dayEnd = new Date();
-        dayEnd.setHours(23, 0, 0, 0);
+        // let dayStart = new Date();
+        // dayStart.setHours(7, 0, 0, 0);
+
+        // let dayEnd = new Date();
+        // dayEnd.setHours(23, 0, 0, 0);
 
         //Calculates time for 1%
-        let interval = (dayEnd - dayStart) / 100;
+        // let interval = (dayEnd - dayStart) / 100;
 
         //Checks if currentTime is between the dayStart & dayEnd
         if (currentTime.getHours() >= dayStart.getHours() 
@@ -68,7 +75,35 @@ class Powerbank {
         }
     }
 
-    checkForMatch(array, propertyToMatch, valueToMatch) {
+    /**
+     * 
+     * @param {*} startTime 
+     * @param {*} endTime 
+     */
+    calcInterval () {
+        let result = {};
+
+        // let start = new Date();
+        // start.setHours(7, 0, 0, 0);
+        
+        // let end = new Date();
+        // end.setHours(23, 0, 0, 0);
+
+        // result.start = new Date(dayStart);
+        // result.end = new Date(dayEnd)
+
+        //Calculates time for 1%
+        // let interval = (dayEnd - dayStart) / 100;
+        // result.interval = (result.end - result.start) / 100;
+
+        return result;
+    }
+
+    calcNextTimer() {
+        
+    }
+
+    checkForMatch (array, propertyToMatch, valueToMatch) {
         for (let i = 0; i < array.length; i++) {
             if (array[i][propertyToMatch] === valueToMatch) {
                 return true;
@@ -77,7 +112,7 @@ class Powerbank {
         return false;
     }
 
-    getPosts() {
+    getPosts () {
         return data.posts;
     }
 
@@ -96,7 +131,7 @@ class Powerbank {
         if (dataString) {
             let dataTable = JSON.parse(dataString);
 
-            //Formats the date
+            //Formats the date for posts
             dataTable.posts.forEach(item => {
                 item.date = new Date(item.date);
             });
@@ -107,6 +142,10 @@ class Powerbank {
                     data.posts.push(item);
                 }
             });
+
+            //Formats the date for energy dayStart and dayEnd
+            data.energy.startTime = new Date(dataTable.energy.startTime);
+            data.energy.endTime = new Date(dataTable.energy.endTime);
         }
     }
 
@@ -135,5 +174,10 @@ class Post {
 }
 
 let data = {
-    posts: []
+    posts: [],
+    energy: {
+        startTime: new Date(0),
+        endTime: new Date(0),
+        interval: 0
+    }
 };

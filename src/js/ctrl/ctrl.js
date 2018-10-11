@@ -49,6 +49,20 @@ class Controller {
         });
     }
 
+    static ctrlSetDay () {
+        //Sets times for start of day and end of day (07:00 - 23:00)
+        let startTime = new Date();
+        startTime.setHours(7, 0, 0, 0);
+
+        let endTime = new Date();
+        endTime.setHours(23, 0, 0, 0)
+
+        myPowerbank.setDay(startTime, endTime);
+
+        //Saves the data to Local Storage
+        myPowerbank.saveAll();
+    }
+
     static setupEventListeners () {
         const DOMstrings = myView.getDOMstrings();
 
@@ -75,6 +89,9 @@ class Controller {
 
         // Adds EventListeners
         Controller.setupEventListeners();
+
+        // Sets times for start of day and end of day
+        Controller.ctrlSetDay();
     }
 
     // TEMP
