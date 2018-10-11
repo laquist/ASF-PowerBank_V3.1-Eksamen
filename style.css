@@ -17,13 +17,18 @@ header {
     max-height: 31px;
 }
 
+#addBtn span {
+    font-size: 2rem;
+    top: -8px;
+}
+
+
 #progressBar p {
     min-width: 100%;
     left: 0;
 
     font-size: 15px;
 }
-
 
 /* -- POSTS -- */
 #posts {
