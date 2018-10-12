@@ -26,7 +26,7 @@ class Powerbank {
     }
 
     calcEnergyPercent () {
-        let currentTime = new Date();
+        const currentTime = new Date();
 
         //Checks if currentTime is between the startTime & endTime
         if (currentTime.getHours() >= data.energy.startTime.getHours() 
@@ -36,7 +36,8 @@ class Powerbank {
             let difference = currentTime - data.energy.startTime;
 
             //Current energy based on the normal "uncharge"
-            let energy = difference / data.energy.interval;
+            // let energy = difference / data.energy.interval;
+            let energy = 100 - (difference / data.energy.interval);
 
             //Calculates energy from personal posts
             data.posts.forEach(item => {
